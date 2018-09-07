@@ -1,0 +1,135 @@
+<!--
+// Course: WEB222
+// Name: Alan Vuong
+// Student ID: avuong19
+// Student Number: 149004178
+// Date: July 18th, 2018
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="utf-8" />
+      <title>WEB222 Assignment 5 - Registration Page - Alan Vuong</title>
+      <!--Include Javascript-->
+      <script src="registration.js"></script>
+      <!--Include CSS-->
+      <link rel="stylesheet" href="normalize1.css">
+</head>
+
+<body>
+      <header>Registration Form</header>
+
+      <!--Navigation Bar-->
+      <nav>
+            <ul>
+                  <li>
+                        <a href="index.html">Index</a>
+                  </li>
+                  <li>
+                        <a class="active" href="">Registration</a>
+                  </li>
+            </ul>
+      </nav>
+
+      <div id="main">
+            <!--Body-->
+            <div id="body">
+                  <p>
+                        <strong>Note:</strong> All fields must be filled out before the form can be submitted.</p>
+                  <form id="registerForm" name="signup" method="POST" action="https://httpbin.org/post" onsubmit="return validatePassword();">
+                        <fieldset>
+                              <legend>Name</legend>
+                              <label for="txtFirstName">First Name:&nbsp;</label>
+                              <input type="text" id="txtFirstName" name="FirstName" maxlength="30" autofocus required/>
+                              <br/>
+                              <label for="txtLastName">Last Name:&nbsp;</label>
+                              <input type="text" id="txtLastName" name="LastName" maxlength="30" required/>
+                        </fieldset>
+                        <fieldset>
+                              <legend>Shipping Address</legend>
+                              <label for="txtUnit">Unit #:&nbsp;</label>
+                              <input type="number" id="txtUnit" name="Unit" title="Unit # must be a number" required/>
+                              <br/>
+                              <label for="txtStreetNo">Street #:&nbsp;</label>
+                              <input type="number" id="txtStreetNo" name="StreeNo" title="Street # must be a number" required/>
+                              <br/>
+                              <label for="txtStreetName">Street Name:&nbsp;</label>
+                              <input type="text" id="txtStreetName" name="StreetName" pattern="\D*" title="Street Name cannot contain digits" required/>
+                              <br/>
+                              <label for="txtCity">City:&nbsp;</label>
+                              <!-- Because some cities have spaces in their name, I am going to allow that here -->
+                              <input type="text" id="txtCity" name="City" pattern="^[a-zA-Z][a-zA-Z\s]*" title="City must contain letters only (spaces allowed)"
+                                    required/>
+                              <br/>
+                              <label for="txtProvince">Province:&nbsp;</label>
+                              <select id="txtProvince" name="Province" size="1" required>
+                                    <option value="">Please select a province...</option>
+                                    <option value="AB">Alberta</option>
+                                    <option value="BC">British Columbia</option>
+                                    <option value="MB">Manitoba</option>
+                                    <option value="NB">New Brunswick</option>
+                                    <option value="NL">Newfoundland and Labrador</option>
+                                    <option value="NS">Nova Scotia</option>
+                                    <option value="ON" selected>Ontario</option>
+                                    <option value="PE">Prince Edward Island</option>
+                                    <option value="QC">Quebec</option>
+                                    <option value="SK">Saskatchewan</option>
+                                    <option value="NT">Northwest Territories</option>
+                                    <option value="NU">Nunavut</option>
+                                    <option value="YT">Yukon</option>
+                              </select>
+                              <br/>
+                              <!-- Canadian postal codes cannot contain the letters D, F, I, O, Q, or U, and cannot start with W or Z -->
+                              <label for="txtPostal">Postal Code:&nbsp;</label>
+                              <input type="text" id="txtPostal" name="Postal" maxLength="6" pattern="[ABCEGHJKLMNPRSTVXY]\d([ABCEGHJKLMNPRSTVWXYZ]\d){2}"
+                                    title="Postal Code must follow Letter Digit Letter Digit Letter Digit formatting with no spaces"
+                                    required/>
+                        </fieldset>
+                        <fieldset>
+                              <legend>Contact Information</legend>
+                              <label for="txtPhone">Phone Number:&nbsp;</label>
+                              <input type="tel" id="txtPhone" name="Phone" pattern="^\d{3}-\d{3}-\d{4}$" title="Phone Number must follow ###-###-#### formatting"
+                                    placeholder="Format: ###-###-####" required/>
+                              <br/>
+                              <label for="txtEmail">Email Address:&nbsp;</label>
+                              <input type="email" id="txtEmail" name="Email" required/>
+                        </fieldset>
+                        <fieldset>
+                              <legend>Login Information</legend>
+                              <label for="txtUsername">Username:&nbsp;</label>
+                              <input type="text" id="txtUsername" name="Username" pattern="^[a-zA-Z].{5,}" title="Username must start with a letter, and must have at least 6 characters"
+                                    required/>
+                              <br/>
+                              <!--Put onfocus and oninput events on both password fields to allow "real-time" updating of side-panel-->
+                              <label for="txtConfirm">Password:&nbsp;</label>
+                              <input type="password" id="txtConfirm" name="Confirm" minlength="8" required onfocus="validatePassword()" oninput="validatePassword()"
+                              />
+                              <br/>
+                              <label for="txtConfirm2">Confirm Password:&nbsp;</label>
+                              <input type="password" id="txtConfirm2" name="Confirm2" minlength="8" required onfocus="validatePassword()" oninput="validatePassword()"
+                              />
+                        </fieldset>
+                        <input type="submit" value="Submit" />
+                        <input type="reset" value="Reset" />
+                        <!--The "makes validation life easier" button-->
+                        <input type="button" id="populate" onclick="populateFields()" value="Populate Fields">
+                        <!--(2) L. Hidden Input Requirements-->
+                        <input type="hidden" name="lastName" id="lastName" value="Vuong" />
+                        <input type="hidden" name="studentId" id="studentId" value="avuong19" />
+                  </form>
+            </div>
+
+            <!--Side Panel-->
+            <div id="sidePanel">
+                  <p>
+                        <strong>Selecting an input field will inform you if you have not passed its validation.</strong>
+                  </p>
+                  <div id="sidePanelContent"></div>
+            </div>
+      </div>
+      <footer>&copy; 2018 Alan Vuong</footer>
+</body>
+
+</html>

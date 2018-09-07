@@ -1,0 +1,132 @@
+/*
+// Course: WEB222
+// Name: Alan Vuong
+// Student ID: avuong19
+// Student Number: 149004178
+// Date: July 18th, 2018
+*/
+
+/* Use Google API Fonts */
+@import url('https://fonts.googleapis.com/css?family=Oxygen|Quicksand|Asap');
+
+/* Set entire document to use Google API Fonts, and force document window right to edges */
+* {
+    font-family: Oxygen, Quicksand, Asap, 'Trebuchet MS', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Add a border to every "main" element */
+header, nav, #body, #sidePanel, footer {
+    border: 1px solid black;
+}
+
+/* Format every "main" element except the nav */
+header, #body, #sidePanel, footer {
+    padding: 1rem;
+}
+
+/* Give header more emphasis */
+header {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+/* Give navigation bar and footer same colours */
+nav, footer {
+    color: white;
+    background-color: #1C1C88;
+}
+
+/* Set up navigation bar */
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Set up navigation bar elements */
+nav li {
+   float: left;
+   border: 1px ridge grey;
+}
+
+/* Add an extra effect when hovering over element (tactile feedback) */
+nav li:hover {
+    background-color: #444488;
+    border-style: inset;
+}
+
+/* Format the actual text within the navigation elements */
+nav a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Create flex display to allow body and side-panel to be similar height */
+#main {
+    display: flex;
+    width: 100%;
+}
+
+/* Give body larger area of screen than side panel and set tint */
+#body {
+    flex: 2;
+    background-color: lightblue;
+}
+
+/* Format fieldsets and legends */
+fieldset, legend {
+    border: 0.1rem solid red;
+    border-radius: 0.5rem;
+    margin: 0.5rem;
+}
+
+/* Add a bit of vertical space between fieldsets */
+fieldset {
+    padding-bottom: 1rem;
+}
+
+legend {
+    font-weight: bold;
+    padding: 0.3rem;
+}
+
+/* Give side panel smaller area of screen than body and set tint */
+#sidePanel {
+    flex: 1;
+    background-color: lightgray;
+}
+
+/* Give the validation messages a bit of vertical space */
+#sidePanelContent {
+    padding: 1rem 0;
+}
+
+/* Set width of labels and have them all aligned with each other */
+label {
+    display: inline-block;
+    width: 10rem;
+    text-align: right;
+}
+
+/* Set width of input and select fields and have them all aligned with each other */
+input, select {
+    width: 15rem;
+    box-sizing: border-box;
+}
+
+/* Styling for the three buttons at form bottom to left-align with rest of form when screen width is reduced*/
+input[type=submit], input[type=reset], input[type=button] {
+    margin-left: 0.5rem;
+}
+
+/* Extra CSS to indicate which fields do not have valid input */
+input:invalid {
+    background-color: #FFCCCC;
+}
